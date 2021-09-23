@@ -14,7 +14,9 @@ from QDictTreeWidget import QDictTreeWidget
 window = None
 treeWidget = None
 
+
 def jread():
+
     global treeWidget
     filepath = QFileDialog().getOpenFileName()[0]
     if os.path.splitext(filepath)[1] == ".json":
@@ -30,6 +32,7 @@ def jread():
         else:
             treeWidget.value = json_load
 
+
 def jsave():
     global treeWidget
     jdata = {}
@@ -40,11 +43,14 @@ def jsave():
         print("json_save")
         json.dump(jdata, f)
 
-def add(a:int, b:int):
+
+def add(a: int, b: int):
     return a + b
 
-def sub(a:int, b:int):
+
+def sub(a: int, b: int):
     return a - b
+
 
 def funcSelect(ind):
     global window
@@ -60,6 +66,7 @@ def funcSelect(ind):
         treeWidget.varName = f"{func_name}_var"
         treeWidget.value = value
 
+
 def funcExec():
     global window
     global func_table
@@ -73,6 +80,7 @@ def funcExec():
         answer = str(answer)
     window.lineEdit_Answer.clear()
     window.lineEdit_Answer.insert(answer)
+
 
 def mainWindow():
     global func_table
@@ -93,7 +101,7 @@ def mainWindow():
     window.pushButton_Exec.clicked.connect(funcExec)
     window.comboBox_Function.currentIndexChanged.connect(funcSelect)
 
-    func_table = { "Add": add, "Sub":sub }
+    func_table = {"Add": add, "Sub": sub}
 
     # set func_table_name to combobox
     for key in func_table.keys():
@@ -103,10 +111,11 @@ def mainWindow():
         print(loader.errorString())
         sys.exit(-1)
 
-    val = {"a":0, "b":{"c":1, "d":{"e":3,"f":4}},"g":5, "h":6}
-    treeWidget = QDictTreeWidget(val, nameof(val), ui = window)
+    val = {"a": 0, "b": {"c": 1, "d": {"e": 3,"f": 4}},"g": 5, "h": 6}
+    treeWidget = QDictTreeWidget(val, nameof(val), ui=window)
 
     window.show()
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
