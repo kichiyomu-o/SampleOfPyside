@@ -7,5 +7,3 @@
 
 https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyopengl
 https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyopengl-accelerate
-
--
